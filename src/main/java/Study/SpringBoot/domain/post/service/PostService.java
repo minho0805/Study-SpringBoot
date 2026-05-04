@@ -1,11 +1,10 @@
-package Study.SpringBoot.post.service;
+package Study.SpringBoot.domain.post.service;
 
-import Study.SpringBoot.post.dto.request.PostRequest;
-import Study.SpringBoot.post.dto.response.PostResponse;
-import Study.SpringBoot.post.entity.Post;
-import Study.SpringBoot.post.repository.PostRepository;
+import Study.SpringBoot.domain.post.dto.request.PostRequest;
+import Study.SpringBoot.domain.post.dto.response.PostResponse;
+import Study.SpringBoot.domain.post.entity.Post;
+import Study.SpringBoot.domain.post.repository.PostRepository;
 import jakarta.transaction.Transactional;
-import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

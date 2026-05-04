@@ -1,4 +1,4 @@
-package Study.SpringBoot.post.entity;
+package Study.SpringBoot.domain.post.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

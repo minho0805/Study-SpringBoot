@@ -1,6 +1,6 @@
-package Study.SpringBoot.post.repository;
+package Study.SpringBoot.domain.post.repository;
 
-import Study.SpringBoot.post.entity.Post;
+import Study.SpringBoot.domain.post.entity.Post;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
