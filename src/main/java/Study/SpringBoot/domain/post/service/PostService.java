@@ -28,6 +28,7 @@ public class PostService {
         Post post = Post.builder()
                 .title(request.getTitle())
                 .content(request.getContent())
+                .likeCount(request.getLikeCount())
                 .build();
 
         // 2. DB에 저장
@@ -85,7 +86,7 @@ public class PostService {
     }
 
     /**
-     * 게시글을 수정하고 저장된 결과를 반환합니다.
+     * <특정 게시글 수정 서비스 함수>
      * @param postId 수정할 게시글 ID
      * @param request 수정할 데이터
      * @return 수정된 게시글 정보 DTO
@@ -101,6 +102,26 @@ public class PostService {
         // 3. 수정된 결과를 DTO로 변환하여 반환
         return new PostResponse(post);
     }
+
+
+    /**
+     * 특정 게시글의 좋아요를 1 늘리고 저장된 결과를 반환합니다.
+     * @param postId 수정할 게시글 ID
+     * @return 수정된 게시글 정보 DTO
+     */
+    @Transactional
+    public PostResponse increaseLikeCount(Long postId) {
+        // 1. DB에서 기존 게시글을 먼저 찾아옵니다. (영속화)
+        Post post = postRepository.findById(postId)
+                .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id=" + postId));
+
+        post.increaseLike();
+
+        // 3. 별도로 save()를 호출하지 않아도 트랜잭션 종료 시점에 변경 감지(Dirty Checking)로 반영됩니다.
+        // (단, 해당 메서드에 @Transactional 어노테이션이 있어야 합니다.)
+        return new PostResponse(post);
+    }
+
 
 
 

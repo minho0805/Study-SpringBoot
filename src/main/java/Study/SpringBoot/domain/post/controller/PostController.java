@@ -99,4 +99,19 @@ public class PostController {
             return ResponseEntity.notFound().build(); // 삭제할 대상을 찾을 수 없음
         }
     }
+
+    /**
+     * 특정 게시글의 좋아요을 증가합니다.
+     *
+     * @param postId
+     */
+    @Operation(summary = "게시글 좋아요 증가 API",
+            description = "")
+    @PatchMapping("/api/posts/{postId}/like")
+    public ResponseEntity<PostResponse> increaseLike(
+            @PathVariable Long postId) {
+        PostResponse response = postService.increaseLikeCount(postId);
+        return ResponseEntity.ok(response);
+
+    }
 }

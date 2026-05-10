@@ -22,10 +22,14 @@ public class PostResponse {
     @Schema(description = "게시글 내용", example = "Hello World")
     private String content;
 
+    @Schema(description = "게시글 좋아요", example = "+1")
+    private Integer likeCount;
+
     // 엔티티를 DTO로 변환하는 생성자 추가
     public PostResponse(Post post) {
         this.id = post.getId();
         this.title = post.getTitle();
         this.content = post.getContent();
+        this.likeCount = post.getLikeCount();
     }
 }

@@ -14,5 +14,8 @@ public class PostRequest {
     @Schema(description = "게시글 내용", example = "Hello World")
     private String content;
 
+    @Schema(description = "게시글 좋아요", example = "+1")
+    private Integer likeCount;
+
 
 }
